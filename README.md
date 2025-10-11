@@ -1,2 +1,1 @@
-# Nusrat-imo-frofile
-My personal imo account
+# Nusrat-imo-fr
